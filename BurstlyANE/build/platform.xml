@@ -1,0 +1,43 @@
+<platform xmlns="http://ns.adobe.com/air/extension/3.1">
+    <sdkVersion>6.0</sdkVersion>
+    <linkerOptions>
+	
+		<option>-ObjC</option>
+		
+		<option>-framework AddressBook</option>
+		<option>-framework AddressBookUI</option>
+		<option>-framework AudioToolbox</option>
+		<option>-framework AVFoundation</option>
+		<option>-framework CFNetwork</option>
+		<option>-framework CoreGraphics</option>
+		<option>-framework CoreLocation</option>
+		<option>-framework CoreMotion</option>
+		<option>-framework CoreTelephony</option>
+		<option>-framework EventKit</option>
+		<option>-framework EventKitUI</option>
+		<option>-framework Foundation</option>
+		<option>-framework iAd</option>
+		<option>-framework MapKit</option>
+		<option>-framework MediaPlayer</option>
+		<option>-framework MessageUI</option>
+		<option>-framework MobileCoreServices</option>
+		<option>-framework OpenAL</option>
+		<option>-framework OpenGLES</option>
+		<option>-framework QuartzCore</option>
+		<option>-framework Security</option>
+		<option>-framework StoreKit</option>
+		<option>-framework SystemConfiguration</option>
+		<option>-framework UIKit</option>
+
+		<option>-weak_framework Accounts</option>
+		<option>-weak_framework AdSupport</option>
+		<option>-weak_framework PassKit</option>
+		<option>-weak_framework Twitter</option>
+		<option>-weak_framework Social</option>
+		
+		<option>-lsqlite3.0</option>
+		<option>-lz</option>
+		<option>-lxml2</option>
+
+	</linkerOptions> 
+</platform>

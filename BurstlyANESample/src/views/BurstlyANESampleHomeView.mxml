@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Burstly Air Plugin">
+	
+	<fx:Declarations>
+		<fx:Component className="AlertMsg">
+			<s:SkinnablePopUpContainer x="70" y="300">
+				<s:TitleWindow title="My Message" close="close()">
+					<s:VGroup horizontalAlign="center" paddingTop="8" paddingBottom="8" paddingLeft="8" paddingRight="8" gap="5" width="100%">
+						<s:Label text="My alert message text here..."/>
+						<s:Button label="OK" click="close()"/>
+					</s:VGroup>
+				</s:TitleWindow>
+			</s:SkinnablePopUpContainer>
+		</fx:Component>
+	</fx:Declarations>
+	
+	
+	<fx:Script><![CDATA[
+		
+		import com.burstly.plugins.BurstlyAds;
+		import com.burstly.plugins.BurstlyAdsEvent;
+		
+		public function createBannerPlacement() : void
+		{
+//			BurstlyAds.getInstance().createBannerPlacement("banner", "5fWofmS3902gWbwSZhXa1w", "0659117979169244027", 0, 0, 320, 50);
+			
+			BurstlyAds.getInstance().createBannerPlacement("banner", "AuXU3-g5O0m05TkOl7W-ow", "0551173089005244809", 0, 0, 57, 57);
+		}
+		
+		public function addBannerPlacementToView() : void
+		{
+			BurstlyAds.getInstance().addBannerToView("banner");
+		}
+		
+		public function removeBannerPlacementFromView() : void
+		{
+			BurstlyAds.getInstance().removeBannerFromView("banner");
+		}
+		
+		public function refreshBannerPlacement() : void 
+		{
+			BurstlyAds.getInstance().showAd("banner");
+		}
+		
+		public function createInterstitialPlacement() : void
+		{
+			BurstlyAds.getInstance().createInterstitialPlacement("interstitial", "5fWofmS3902gWbwSZhXa1w", "0759117979169244027");
+			
+			BurstlyAds.getInstance().addEventListener(BurstlyAdsEvent.BurstlyAdsEventShown, adsEventListener);
+			BurstlyAds.getInstance().addEventListener(BurstlyAdsEvent.BurstlyAdsEventSucceeded, adsEventListener);
+		}
+		
+		function adsEventListener(e : BurstlyAdsEvent) : void
+		{
+			trace("EVENT!");
+			trace(e.getPlacement());
+		}
+		
+		public function cacheInterstitialPlacement() : void
+		{
+			BurstlyAds.getInstance().cacheAd("interstitial");
+		}
+		
+		public function showInterstitialPlacement() : void
+		{
+			BurstlyAds.getInstance().showAd("interstitial");
+		}
+
+	]]></fx:Script>
+	
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">       
+		<s:Button label="Create Banner Placement" click="createBannerPlacement()" />
+		<s:Button label="Add Banner to View" click="addBannerPlacementToView()" />
+		<s:Button label="Remove Banner from View" click="removeBannerPlacementFromView()" />
+		<s:Button label="Refresh Banner" click="refreshBannerPlacement()" />
+		<s:Button label="Create Interstitial Placement" click="createInterstitialPlacement()" />
+		<s:Button label="Cache Interstitial" click="cacheInterstitialPlacement()" />
+		<s:Button label="Show Interstitial" click="showInterstitialPlacement()" />
+	</s:VGroup>
+	
+</s:View>

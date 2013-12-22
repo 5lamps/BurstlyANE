@@ -1,0 +1,22 @@
+<extension xmlns="http://ns.adobe.com/air/extension/3.1">
+    <id>com.burstly.plugins.BurstlyANE</id>
+    <versionNumber>1.0</versionNumber>
+    <platforms>
+        <platform name="Android-ARM">
+            <applicationDeployment>
+                <nativeLibrary>libBurstlyANE.jar</nativeLibrary>
+				<initializer>com.burstly.plugins.BurstlyANE.BurstlyExtension</initializer>
+            </applicationDeployment>
+        </platform>
+        <platform name="iPhone-ARM">
+            <applicationDeployment>
+				<nativeLibrary>libBurstlyANE.a</nativeLibrary>
+				<initializer>BurstlyANEInitializer</initializer>
+				<finalizer>BurstlyANEFinalizer</finalizer>
+            </applicationDeployment>
+        </platform>
+        <platform name="default">
+            <applicationDeployment/>
+        </platform>   
+	</platforms>
+</extension>
