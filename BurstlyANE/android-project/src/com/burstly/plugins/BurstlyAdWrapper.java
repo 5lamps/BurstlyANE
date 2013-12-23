@@ -10,9 +10,11 @@ import com.burstly.lib.ui.BurstlyView;
 
 import android.app.Activity;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+
 
 public class BurstlyAdWrapper {
 	
@@ -72,7 +74,9 @@ public class BurstlyAdWrapper {
 	private static RelativeLayout mBaseLayout = null;
 	private static HashMap<String, BurstlyView> mBurstlyViewHashMap = null;
 	private static HashMap<String, Boolean> mBurstlyViewCachedHashMap = null;
-	private static String mCallbackGameObjectName = null;
+	
+	private static ViewGroup _rootViewGroup = null;
+	private static View _airSurfaceView = null;
 	
 	
 	/*****************************************************************/
@@ -102,6 +106,16 @@ public class BurstlyAdWrapper {
 	 */
 	public static void setAIRContext(FREContext aContext) {
 		mAIRContext = aContext;
+		
+		_rootViewGroup = (ViewGroup)((ViewGroup)mAIRContext.getActivity().findViewById(android.R.id.content)).getChildAt(0);
+		// We need to maintain a reference to the AIRWindowSurfaceView for HTML5 video support,
+		// otherwise the video view shows below the surface view.
+		for (int i = 0; i < _rootViewGroup.getChildCount(); i++) {
+			View rootChildView = _rootViewGroup.getChildAt(i);
+			if (rootChildView.getClass().getSimpleName().equals("AIRWindowSurfaceView")) {
+				_airSurfaceView = rootChildView;
+			}
+		}
 	}
 	
 	/*
@@ -547,6 +561,16 @@ public class BurstlyAdWrapper {
 					mBurstlyViewCachedHashMap.put(placementName, true);
 
 				if (mAIRContext == null) return;
+				
+				// Update the visibility of the AIR surface view
+				if (callbackEvent == BurstlyEvent.BurstlyEventFailed || 
+						callbackEvent == BurstlyEvent.BurstlyEventDismissFullscreen) {
+					_airSurfaceView.setVisibility(View.VISIBLE);
+				}
+				
+				if (callbackEvent == BurstlyEvent.BurstlyEventTakeoverFullscreen) {
+					_airSurfaceView.setVisibility(View.GONE);
+				}
 				
 				mAIRContext.dispatchStatusEventAsync(callbackEvent.getEventName(), placementName);
 				

@@ -7,12 +7,8 @@ import android.app.Activity;
 
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREFunction;
-import com.adobe.fre.FREInvalidObjectException;
 import com.adobe.fre.FREObject;
-import com.adobe.fre.FRETypeMismatchException;
-import com.adobe.fre.FREWrongThreadException;
 
-import com.burstly.lib.conveniencelayer.Burstly;
 import com.burstly.plugins.BurstlyAdWrapper;
 import com.burstly.plugins.BurstlyCurrencyWrapper;
 import com.burstly.plugins.TestFlightWrapper;

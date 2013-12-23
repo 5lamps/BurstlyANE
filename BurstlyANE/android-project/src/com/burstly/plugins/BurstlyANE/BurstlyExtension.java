@@ -1,11 +1,7 @@
 package com.burstly.plugins.BurstlyANE;
 
-import android.app.Activity;
-
 import com.adobe.fre.FREContext;
 import com.adobe.fre.FREExtension;
-import com.burstly.plugins.BurstlyAdWrapper;
-import com.burstly.plugins.BurstlyCurrencyWrapper;
 
 public class BurstlyExtension implements FREExtension {
 

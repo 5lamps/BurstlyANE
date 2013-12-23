@@ -2,30 +2,20 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" title="Burstly Air Plugin">
 	
-	<fx:Declarations>
-		<fx:Component className="AlertMsg">
-			<s:SkinnablePopUpContainer x="70" y="300">
-				<s:TitleWindow title="My Message" close="close()">
-					<s:VGroup horizontalAlign="center" paddingTop="8" paddingBottom="8" paddingLeft="8" paddingRight="8" gap="5" width="100%">
-						<s:Label text="My alert message text here..."/>
-						<s:Button label="OK" click="close()"/>
-					</s:VGroup>
-				</s:TitleWindow>
-			</s:SkinnablePopUpContainer>
-		</fx:Component>
-	</fx:Declarations>
-	
-	
 	<fx:Script><![CDATA[
 		
+		import com.burstly.plugins.BurstlyCurrency;
 		import com.burstly.plugins.BurstlyAds;
 		import com.burstly.plugins.BurstlyAdsEvent;
 		
+		public function initializeCurrency() : void
+		{
+			BurstlyCurrency.getInstance().initialize("5fWofmS3902gWbwSZhXa1w", "");
+		}
+		
 		public function createBannerPlacement() : void
 		{
-//			BurstlyAds.getInstance().createBannerPlacement("banner", "5fWofmS3902gWbwSZhXa1w", "0659117979169244027", 0, 0, 320, 50);
-			
-			BurstlyAds.getInstance().createBannerPlacement("banner", "AuXU3-g5O0m05TkOl7W-ow", "0551173089005244809", 0, 0, 57, 57);
+			BurstlyAds.getInstance().createBannerPlacement("banner", "5fWofmS3902gWbwSZhXa1w", "0659117979169244027", 0, 0, 320, 50);
 		}
 		
 		public function addBannerPlacementToView() : void
@@ -69,7 +59,8 @@
 
 	]]></fx:Script>
 	
-	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">       
+	<s:VGroup width="100%" height="100%" verticalAlign="middle" horizontalAlign="center">
+		<s:Button label="Initialize Currency" click="initializeCurrency()" />
 		<s:Button label="Create Banner Placement" click="createBannerPlacement()" />
 		<s:Button label="Add Banner to View" click="addBannerPlacementToView()" />
 		<s:Button label="Remove Banner from View" click="removeBannerPlacementFromView()" />

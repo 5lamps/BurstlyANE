@@ -5,14 +5,12 @@ import android.util.Log;
 
 import com.adobe.fre.FREContext;
 
-import com.burstly.lib.conveniencelayer.Burstly;
 import com.burstly.lib.currency.CurrencyManager;
 
 public class BurstlyCurrencyWrapper {
 	
 	private static Activity mActivity = null;
 	private static FREContext mAIRContext = null;
-	private static String mCallbackGameObjectName = null;
 	
 	private static CurrencyManager mCurrencyManager = null;
 	
