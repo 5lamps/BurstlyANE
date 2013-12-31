@@ -87,10 +87,8 @@ package com.burstly.plugins
 		}
 		
 		/*
-			Initiates a request to update the currency balances for all currencies from the Burstly server. You must use the
-			setCallbackGameObjectName(string callbackGameObjectName) to set a callback GameObject to receive a callback when this request
-			either finishes successfully or fails. The GameObject must have a method called BurstlyCallback(string), where the string passed
-			by the BurstlyCurrency plugin will either be UPDATED or FAILED, depending on whether the update request is successful or fails.
+			Initiates a request to update the currency balances for all currencies from the Burstly server. When the request either 
+			returns as successful or failed, this class will dispatch a BurstlyCurrencyEvent.
 		*/
 		public function updateBalancesFromServer() : void
 		{
