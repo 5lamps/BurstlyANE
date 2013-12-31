@@ -9,8 +9,8 @@
 *.class
 
 # generated files
-!BurstlyANE/bin/
 bin/
+!BurstlyANE/bin/
 gen/
 
 # Ignore gradle files
@@ -23,7 +23,6 @@ local.properties
 proguard/
 
 # Build and Release Folders
-bin/
 bin-debug/
 bin-release/
 
