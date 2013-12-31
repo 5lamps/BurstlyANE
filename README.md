@@ -2,7 +2,7 @@
 
 ## Compiling
 
-Use the 'ant' command within the BurstlyANE/build folder. This will generate BurstlyANE/bin/BurstlyANE.ane
+Use the 'ant' command within the BurstlyANE/build folder. This will generate BurstlyANE/bin/BurstlyANE.ane. Note that we have included the compiled ANE in this repository for convenience.
 
 ## Adding to your Project (Flash Builder)
 

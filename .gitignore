@@ -9,6 +9,7 @@
 *.class
 
 # generated files
+!BurstlyANE/bin/
 bin/
 gen/
 
