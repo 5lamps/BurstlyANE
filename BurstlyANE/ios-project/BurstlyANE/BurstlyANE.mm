@@ -157,8 +157,6 @@ extern "C" {
 FREObject BurstlyANE_init(FREContext ctx, void *funcData, uint32_t argc, FREObject argv[]) {
     _context = ctx;
     
-    NSLog(@"************************BurstlyANE_init");
-    
     BurstlyAdWrapper_setContext(&_context);
     BurstlyCurrencyWrapper_setContext(&_context);
 
@@ -423,9 +421,12 @@ FREObject BurstlyANE_BurstlyCurrencyWrapper_getBalance(FREContext ctx, void *fun
     
     FREGetObjectAsUTF8(argv[0], &stringLength, &currency);
     
-    BurstlyCurrencyWrapper_getBalance((const char *)currency);
+    NSInteger amount = BurstlyCurrencyWrapper_getBalance((const char *)currency);
     
-    return NULL;
+    FREObject returnValue;
+    FRENewObjectFromInt32(amount, &returnValue);
+    
+    return returnValue;
 }
 
 FREObject BurstlyANE_BurstlyCurrencyWrapper_increaseBalance(FREContext ctx, void *funcData, uint32_t argc, FREObject argv[]) {
